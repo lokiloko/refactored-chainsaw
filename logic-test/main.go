@@ -9,8 +9,12 @@ import (
 func main() {
 	// Driver Code
 	testCase1 := []string{"kita", "atik", "tika", "aku", "kia", "makan", "kua"}
+	testCase2 := []string{"bakar", "kabar", "sabar", "baka", "kaba", "kbaa", "a"}
+	testCase3 := []string{"abcdefg", "bcdefga", "cdefgab", "defgabc", "efgabcd", "fgabcde", "gabcdef"}
 
 	fmt.Println(solveAnagram(testCase1))
+	fmt.Println(solveAnagram(testCase2))
+	fmt.Println(solveAnagram(testCase3))
 }
 
 func solveAnagram(testCase []string) [][]string {
