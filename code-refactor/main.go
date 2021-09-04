@@ -11,11 +11,13 @@ func main() {
 	testCase2 := "Saya suka coding (IYKWIM)"
 	testCase3 := "Kalimat dengan kurung buka ( tanpa kurung tutup"
 	testCase4 := "Statement dengan 2 tanda (ini satu) dan (ini yg kedua)"
+	testCase5 := ""
 
 	fmt.Println(findFirstStringInBracket(testCase1))
 	fmt.Println(findFirstStringInBracket(testCase2))
 	fmt.Println(findFirstStringInBracket(testCase3))
 	fmt.Println(findFirstStringInBracket(testCase4))
+	fmt.Println(findFirstStringInBracket(testCase5))
 }
 
 func findFirstStringInBracket(str string) string {
