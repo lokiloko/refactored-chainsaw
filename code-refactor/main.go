@@ -22,17 +22,26 @@ func findFirstStringInBracket(str string) string {
 	openBracketChar := "("
 	closeBracketChar := ")"
 
+	// find the opening bracket
 	indexFirstBracketFound := strings.Index(str, openBracketChar)
+
+	// if no open bracket found means there will be no string inside bracket, thus return empty
 	if indexFirstBracketFound >= 0 {
 		runes := []rune(str)
-		wordsAfterFirstBracket := string(runes[indexFirstBracketFound:len(str)])
+
+		// collect all the words after first open bracket
+		wordsAfterFirstBracket := string(runes[indexFirstBracketFound + 1:len(str)])
+
+		// find the closing bracket
 		indexClosingBracketFound := strings.Index(wordsAfterFirstBracket, closeBracketChar)
+
+		// if no close bracket found after the opening bracket means there will be no string inside bracket
+		// thus return empty
 		if indexClosingBracketFound >= 0 {
-			runes := []rune(wordsAfterFirstBracket)
-			return string(runes[1 : indexClosingBracketFound-1])
+			runes = []rune(wordsAfterFirstBracket)
+			return string(runes[0 : indexClosingBracketFound])
 		}
 	}
 
-	// if no open bracket found means there will be no string inside bracket, thus return empty
 	return ""
 }
