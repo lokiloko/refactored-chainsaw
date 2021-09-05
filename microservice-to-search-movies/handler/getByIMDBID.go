@@ -10,8 +10,10 @@ func (h handler) GetByIMDBID(id string) (dto.GetByIMDBIDResponse, error) {
 		ID: id,
 	})
 	if err != nil {
+		go h.Service.Logs.WriteLog(id, err)
 		return dto.GetByIMDBIDResponse{}, err
 	}
 
+	go h.Service.Logs.WriteLog(id, res)
 	return res.ToGetByIMDBIDResponse(), nil
 }

@@ -7,6 +7,7 @@ import (
 	"github.com/lokiloko/refactored-chainsaw/microservice-to-search-movies/controller/rest"
 	"github.com/lokiloko/refactored-chainsaw/microservice-to-search-movies/handler"
 	"github.com/lokiloko/refactored-chainsaw/microservice-to-search-movies/service"
+	"github.com/lokiloko/refactored-chainsaw/microservice-to-search-movies/service/logs"
 	"github.com/lokiloko/refactored-chainsaw/microservice-to-search-movies/service/omdb"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
@@ -68,6 +69,7 @@ func (app *App) InitializeRestController() {
 func (app *App) InitializeService() {
 	svc := service.Service{
 		OMDB: omdb.NewService(),
+		Logs: logs.NewService(),
 	}
 
 	app.Service = svc

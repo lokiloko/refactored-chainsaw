@@ -11,8 +11,10 @@ func (h handler) GetMoviesPaginated(page uint64, keyword string) (dto.GetMoviesP
 		Page:    page,
 	})
 	if err != nil {
+		go h.Service.Logs.WriteLog(map[string]interface{}{"page": page, "keyword": keyword}, err)
 		return dto.GetMoviesPaginatedResponse{}, err
 	}
 
+	go h.Service.Logs.WriteLog(map[string]interface{}{"page": page, "keyword": keyword}, res)
 	return res.ToGetMoviesPaginatedResponse(), nil
 }
