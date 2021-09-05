@@ -10,6 +10,7 @@ import (
 
 type Config struct {
 	AppPort    string `envconfig:"APP_PORT"`
+	GrpcPort   string `envconfig:"GRPC_PORT"`
 	OMDBHost   string `envconfig:"OMDB_HOST"`
 	OMDBAPIKey string `envconfig:"OMDB_API_KEY"`
 }
