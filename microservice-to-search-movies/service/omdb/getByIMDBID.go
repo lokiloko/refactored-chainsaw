@@ -8,7 +8,7 @@ import (
 	"go.uber.org/zap"
 )
 
-func (r omdbService) GetByID(request omdb.GetByIDRequest) (omdb.GetByIDResponse, error) {
+func (r omdbService) GetByIMDBID(request omdb.GetByIDRequest) (omdb.GetByIDResponse, error) {
 	resp := omdb.GetByIDResponse{}
 	requestParams := dto.WebServiceRequestParams{
 		Method: "GET",

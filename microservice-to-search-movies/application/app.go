@@ -3,6 +3,7 @@ package application
 import (
 	"github.com/labstack/echo/v4"
 	"github.com/lokiloko/refactored-chainsaw/microservice-to-search-movies/controller/rest"
+	"github.com/lokiloko/refactored-chainsaw/microservice-to-search-movies/handler"
 	"github.com/lokiloko/refactored-chainsaw/microservice-to-search-movies/service"
 	"github.com/lokiloko/refactored-chainsaw/microservice-to-search-movies/service/omdb"
 	"go.uber.org/zap"
@@ -22,16 +23,19 @@ func (app *App) Start(address string) {
 }
 
 func (app *App) InitializeRoutes() {
-	_ = app.E.Group("/v1")
+	v1 := app.E.Group("/v1")
 
 	app.E.GET("/health", app.Controller.Health)
+	v1.GET("/movie/:id", app.Controller.GetByIMDBID)
 }
 
-func (app *App) InitializeController() {
-	ctrl := rest.NewController()
-	_ = service.Service{
+func (app *App) InitializeRestController() {
+	svc := service.Service{
 		OMDB: omdb.NewService(),
 	}
+	hdlr := handler.NewHandler(svc)
+
+	ctrl := rest.NewController(hdlr)
 
 	app.Controller = ctrl
 }

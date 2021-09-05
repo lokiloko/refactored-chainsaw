@@ -1,10 +1,13 @@
 package rest
 
-type Controller struct {
+import "github.com/lokiloko/refactored-chainsaw/microservice-to-search-movies/handler"
 
+type Controller struct {
+	handler handler.Handler
 }
 
-func NewController() *Controller {
+func NewController(handler handler.Handler) *Controller {
 	return &Controller{
+		handler: handler,
 	}
 }

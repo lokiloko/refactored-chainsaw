@@ -11,7 +11,7 @@ func main() {
 		E: echo.New(),
 	}
 
-	app.InitializeController()
+	app.InitializeRestController()
 	app.InitializeRoutes()
 	app.Start(":" + config.GetConfig().AppPort)
 }

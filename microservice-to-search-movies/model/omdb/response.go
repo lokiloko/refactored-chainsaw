@@ -1,5 +1,7 @@
 package omdb
 
+import "github.com/lokiloko/refactored-chainsaw/microservice-to-search-movies/model/dto"
+
 type (
 	GetPaginatedResponse struct {
 		Search      []Movie `json:"Search"`
@@ -36,3 +38,33 @@ type (
 		BoxOffice  string `json:"BoxOffice"`
 	}
 )
+
+func (d GetByIDResponse) ToGetByIMDBIDResponse() dto.GetByIMDBIDResponse {
+	return dto.GetByIMDBIDResponse{
+		Data: dto.Movie{
+			Title:      d.Title,
+			Year:       d.Year,
+			Rated:      d.Rated,
+			Released:   d.Released,
+			Runtime:    d.Runtime,
+			Genre:      d.Genre,
+			Director:   d.Director,
+			Writer:     d.Writer,
+			Actors:     d.Actors,
+			Plot:       d.Plot,
+			Language:   d.Language,
+			Country:    d.Country,
+			Awards:     d.Awards,
+			Poster:     d.Poster,
+			Metascore:  d.Metascore,
+			ImdbID:     d.ImdbID,
+			ImdbVotes:  d.ImdbVotes,
+			ImdbRating: d.ImdbRating,
+			Type:       d.Type,
+			DVD:        d.DVD,
+			Production: d.Production,
+			Website:    d.Website,
+			BoxOffice:  d.BoxOffice,
+		},
+	}
+}
