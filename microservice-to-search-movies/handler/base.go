@@ -11,6 +11,7 @@ type handler struct {
 
 type Handler interface {
 	GetByIMDBID(id string) (dto.GetByIMDBIDResponse, error)
+	GetMoviesPaginated(page uint64, keyword string) (dto.GetMoviesPaginatedResponse, error)
 }
 
 func NewHandler(service service.Service) Handler {

@@ -27,6 +27,7 @@ func (app *App) InitializeRoutes() {
 
 	app.E.GET("/health", app.Controller.Health)
 	v1.GET("/movie/:id", app.Controller.GetByIMDBID)
+	v1.GET("/movie", app.Controller.GetMoviesPaginated)
 }
 
 func (app *App) InitializeRestController() {

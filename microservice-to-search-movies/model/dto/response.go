@@ -13,6 +13,9 @@ type (
 	GetByIMDBIDResponse struct {
 		Data Movie `json:"data"`
 	}
+	GetMoviesPaginatedResponse struct {
+		Data Movies `json:"data"`
+	}
 )
 
 type (
@@ -24,29 +27,30 @@ type (
 		HeapSys    uint64 `json:"heapSys"`
 		NumGC      uint32 `json:"numGC"`
 	}
+	Movies []Movie
 	Movie struct {
-		Title      string `json:"title"`
-		Year       string `json:"year"`
-		Rated      string `json:"rated"`
-		Released   string `json:"released"`
-		Runtime    string `json:"runtime"`
-		Genre      string `json:"genre"`
-		Director   string `json:"director"`
-		Writer     string `json:"writer"`
-		Actors     string `json:"actors"`
-		Plot       string `json:"plot"`
-		Language   string `json:"language"`
-		Country    string `json:"country"`
-		Awards     string `json:"awards"`
-		Poster     string `json:"poster"`
-		Metascore  string `json:"metascore"`
-		ImdbID     string `json:"imdbID"`
-		ImdbVotes  string `json:"imdbVotes"`
-		ImdbRating string `json:"imdbRating"`
-		Type       string `json:"type"`
-		DVD        string `json:"dvd"`
-		Production string `json:"production"`
-		Website    string `json:"website"`
-		BoxOffice  string `json:"boxOffice"`
+		Title      string  `json:"title,omitempty"`
+		Year       string  `json:"year,omitempty"`
+		Rated      *string `json:"rated,omitempty"`
+		Released   *string `json:"released,omitempty"`
+		Runtime    *string `json:"runtime,omitempty"`
+		Genre      *string `json:"genre,omitempty"`
+		Director   *string `json:"director,omitempty"`
+		Writer     *string `json:"writer,omitempty"`
+		Actors     *string `json:"actors,omitempty"`
+		Plot       *string `json:"plot,omitempty"`
+		Language   *string `json:"language,omitempty"`
+		Country    *string `json:"country,omitempty"`
+		Awards     *string `json:"awards,omitempty"`
+		Poster     string  `json:"poster,omitempty"`
+		Metascore  *string `json:"metascore,omitempty"`
+		ImdbID     string  `json:"imdbID,omitempty"`
+		ImdbVotes  *string `json:"imdbVotes,omitempty"`
+		ImdbRating *string `json:"imdbRating,omitempty"`
+		Type       string  `json:"type,omitempty"`
+		DVD        *string `json:"dvd,omitempty"`
+		Production *string `json:"production,omitempty"`
+		Website    *string `json:"website,omitempty"`
+		BoxOffice  *string `json:"boxOffice,omitempty"`
 	}
 )
