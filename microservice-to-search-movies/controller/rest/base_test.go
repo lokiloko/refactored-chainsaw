@@ -1,4 +1,4 @@
-package controller
+package rest
 
 import (
 	"github.com/golang/mock/gomock"

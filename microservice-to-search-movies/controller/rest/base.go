@@ -1,4 +1,4 @@
-package controller
+package rest
 
 type Controller struct {
 

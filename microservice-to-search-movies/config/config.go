@@ -9,7 +9,9 @@ import (
 )
 
 type Config struct {
-	AppPort string `envconfig:"APP_PORT"`
+	AppPort    string `envconfig:"APP_PORT"`
+	OMDBHost   string `envconfig:"OMDB_HOST"`
+	OMDBAPIKey string `envconfig:"OMDB_API_KEY"`
 }
 
 var once sync.Once
