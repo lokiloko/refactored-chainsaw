@@ -10,10 +10,10 @@ import (
 	"net/http/httptest"
 )
 
-func (cs *ControllerSuite) Test_GetByIMDBId() {
+func (cs *ControllerSuite) Test_GetMoviesPaginated() {
 	cs.Run("Success", func() {
 		id := "tt0372784"
-		expectedResult := *mocks.GetOMDBByID(1)
+		expectedResult := *mocks.GetOmdbPaginated(1)
 
 		e := echo.New()
 		req := httptest.NewRequest(echo.GET, "/v1/movie/:id", nil)
@@ -27,9 +27,9 @@ func (cs *ControllerSuite) Test_GetByIMDBId() {
 
 		expectedStatusCode := http.StatusOK
 
-		cs.handler.EXPECT().GetByIMDBID(gomock.Any()).Return(expectedResult.ToGetByIMDBIDResponse(), nil).Times(1)
+		cs.handler.EXPECT().GetMoviesPaginated(gomock.Any(), gomock.Any()).Return(expectedResult.ToGetMoviesPaginatedResponse(), nil).Times(1)
 
-		_ = cs.controller.GetByIMDBID(c)
+		_ = cs.controller.GetMoviesPaginated(c)
 		cs.Equal(expectedStatusCode, rec.Code)
 	})
 
@@ -48,9 +48,9 @@ func (cs *ControllerSuite) Test_GetByIMDBId() {
 
 		expectedStatusCode := http.StatusInternalServerError
 
-		cs.handler.EXPECT().GetByIMDBID(gomock.Any()).Return(dto.GetByIMDBIDResponse{}, errors.New("force error")).Times(1)
+		cs.handler.EXPECT().GetMoviesPaginated(gomock.Any(), gomock.Any()).Return(dto.GetMoviesPaginatedResponse{}, errors.New("force error")).Times(1)
 
-		_ = cs.controller.GetByIMDBID(c)
+		_ = cs.controller.GetMoviesPaginated(c)
 		cs.Equal(expectedStatusCode, rec.Code)
 	})
 }

@@ -10,6 +10,6 @@ type OMDBService interface {
 type omdbService struct {
 }
 
-func NewService() OMDBService {
+func NewOMDBService() OMDBService {
 	return &omdbService{}
 }

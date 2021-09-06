@@ -9,10 +9,10 @@ import (
 )
 
 type Config struct {
-	AppPort    string `envconfig:"APP_PORT"`
-	GrpcPort   string `envconfig:"GRPC_PORT"`
-	OMDBHost   string `envconfig:"OMDB_HOST"`
-	OMDBAPIKey string `envconfig:"OMDB_API_KEY"`
+	AppPort    string `envconfig:"APP_PORT" default:"8090"`
+	GrpcPort   string `envconfig:"GRPC_PORT" default:"9000"`
+	OMDBHost   string `envconfig:"OMDB_HOST" default:"http://www.omdbapi.com/"`
+	OMDBAPIKey string `envconfig:"OMDB_API_KEY" default:"faf7e5bb"`
 }
 
 var once sync.Once

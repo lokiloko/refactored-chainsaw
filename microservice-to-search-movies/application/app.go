@@ -68,7 +68,7 @@ func (app *App) InitializeRestController() {
 
 func (app *App) InitializeService() {
 	svc := service.Service{
-		OMDB: omdb.NewService(),
+		OMDB: omdb.NewOMDBService(),
 		Logs: logs.NewService(),
 	}
 

@@ -5,7 +5,7 @@ import "github.com/lokiloko/refactored-chainsaw/microservice-to-search-movies/mo
 type (
 	GetPaginatedResponse struct {
 		Search      []Movie `json:"Search"`
-		TotalResult uint64  `json:"totalResults"`
+		TotalResult string  `json:"totalResults"`
 		Response    string  `json:"Response"`
 	}
 	GetByIDResponse struct {
